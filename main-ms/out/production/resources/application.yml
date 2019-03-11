@@ -1,0 +1,91 @@
+server:
+  port: 8080
+
+
+
+
+spring:
+  jpa.hibernate.ddl-auto: create
+  datasource:
+    isogj:
+      host: ${MYSQL_HOST:isogj-mysql}
+      port: ${MYSQL_PORT:3306}
+      current_schema: isogj_account
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://${spring.datasource.isogj.host}:${spring.datasource.isogj.port}/${spring.datasource.isogj.current_schema}?autoReconnect=true&useSSL=false&useUnicode=yes&characterEncoding=UTF-8
+    username: root
+    password:
+    tomcat:
+      max-wait: 20000
+      max-active: 50
+      max-idle: 20
+      min-idle: 15
+    platform: mysql
+  session:
+    store-type: hash_map
+    jdbc:
+      initializer.enabled: true
+      table-name: SPRING_SESSION
+  http.multipart:
+    enabled: true
+    max-file-size: 100mb
+    max-request-size: 100mb
+  mail:
+    username: intsogj@gmail.com
+    password: 1346792c212C
+    host: smtp.gmail.com
+    port: 587
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+
+
+
+
+
+server.session.cookie.max-age: 3600
+server.session.timeout: 60
+
+
+logging.level:
+  org.springframework.security: DEBUG
+  org.hibernate.SQL: DEBUG
+  org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+
+flyway:
+  schemas: ${spring.datasource.isogj.current_schema}
+  url: jdbc:mysql://${spring.datasource.isogj.host}:${spring.datasource.isogj.port}/?autoReconnect=true&useSSL=false
+  user: ${spring.datasource.username}
+  password: ${spring.datasource.password}
+  enabled: true
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    serviceUrl:
+      defaultZone: http://${REGISTRY_HOST:registry}:${REGISTRY_PORT:8761}/eureka/
+
+endpoints:
+  enabled: false
+
+
+
+security:
+  oauth-ms-url: http://${OAUTH_MS_HOST:oauth-ms}:${OAUTH_MS_PORT:9999}
+  oauth2:
+    client:
+      clientId: ${spring.application.name}
+      accessTokenUri: ${security.oauth-ms-url}/oauth/token
+      grant-type: client_credentials
+      scope: server
+      client-secret: ${MAIN_SERVICE_PASSWORD:123}
+    resource:
+      user-info-uri: ${security.oauth-ms-url}/users/current
+
+
+

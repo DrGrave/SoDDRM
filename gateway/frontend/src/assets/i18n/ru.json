@@ -1,0 +1,179 @@
+{
+  "SIGN_UP": {
+    "COMMON": {
+      "VALIDATION": {
+        "REQUIRED": "Обязательное поле"
+      }
+    },
+    "TITLE": "Регистрация",
+    "USERNAME": {
+      "PLACEHOLDER": "Логин",
+      "VALIDATION": {
+        "NOT_UNIQUE": "Пользователь с таким логином уже зарегистрирован",
+        "PATTERN": "Имя пользователя может содержать только латинские символы"
+      }
+    },
+    "PASSWORD": {
+      "PLACEHOLDER": "Пароль",
+      "VALIDATION": {
+        "PATTERN": "Пароль должен содержать хотя бы одну цифру, один латинский символ и быть не короче восьми символов"
+      }
+    },
+    "BIRTHDAY":{
+      "PLACEHOLDER": "День рождения",
+      "VALIDATION":{
+        "PATTERN": "Пожалуйста, укажите дату вашего рождения"
+      }
+    },
+    "CONFIRM_PASSWORD": {
+      "PLACEHOLDER": "Подтвердите пароль",
+      "VALIDATION": {
+        "NOT_EQUAL": "Пароли не совпадают"
+      }
+    },
+    "EMAIL": {
+      "PLACEHOLDER": "Электронная почта",
+      "VALIDATION": {
+        "NOT_UNIQUE": "Пользователь с таким адресом уже зарегистрирован",
+        "EMAIL": "Неверный email. Проверьте правильность указанного адреса"
+      }
+    },
+    "FIRST_NAME": {
+      "PLACEHOLDER": "Имя"
+    },
+    "MIDDLE_NAME": {
+      "PLACEHOLDER": "Отчество"
+    },
+    "LAST_NAME": {
+      "PLACEHOLDER": "Фамилия"
+    },
+    "SUBMIT_BUTTON": {
+      "TEXT": "Отправить"
+    }
+  },
+  "HEADER":{
+    "COMMON": {
+      "VALIDATION": {
+        "REQUIRED": "Field is mandatory"
+      }
+    },
+    "SIGN_IN":{
+      "PLACEHOLDER": "Войти"
+    },
+    "SIGN_UP":{
+      "PLACEHOLDER": "Регистрация"
+    },
+    "HOME":{
+      "PLACEHOLDER": "Домой"
+    },
+    "VACANCY":{
+      "PLACEHOLDER": "Вакансии"
+    },
+    "WORK":{
+      "PLACEHOLDER": "Работа"
+    },
+    "LOGOUT":{
+      "PLACEHOLDER": "Выйти"
+    },
+    "USER":{
+      "PLACEHOLDER": "Пользователи"
+    }
+  },
+  "LOGIN":{
+    "BUTTON":{
+      "LOGIN":{
+        "PLACEHOLDER": "Войти"
+      }
+    },
+    "LOGIN":{
+      "PLACEHOLDER": "Логин"
+    },
+    "PASSWORD":{
+      "PLACEHOLDER": "Пароль"
+    },
+    "ENTER":{
+      "PLACEHOLDER": "Войти"
+    },
+    "REQUIRED":{
+      "PASSWORD":{
+        "PLACEHOLDER": "Введите пароль"
+      },
+      "LOGIN":{
+        "PLACEHOLDER": "Введите логин"
+      }
+    },
+    "HEADER":{
+      "PLACEHOLDER": "Вход в систему"
+    },
+    "ERROR":{
+      "INCORRECT_LOG_PASS":{
+        "PLACEHOLDER": "Неправильный логин или пароль."
+      }
+    }
+  },
+  "USERS":{
+    "DEPARTMENT":{
+      "PLACEHOLDER": "Кафедра:"
+    },
+    "UNIVERSITY":{
+      "PLACEHOLDER": "Университет:"
+    },
+    "SKILLS":{
+      "PLACEHOLDER": "Навыки"
+    }
+  },
+  "VACANCYS":{
+    "COMPANY":{
+      "PLACEHOLDER": "Компания:"
+    },
+    "VACANCY_TYPE":{
+      "PLACEHOLDER": "Тип вакансии:"
+    }
+  },
+  "HOME":{
+    "GENDER":{
+      "PLACEHOLDER": "Пол"
+    },
+    "CITY":{
+      "PLACEHOLDER": "Город"
+    },
+    "TYPE_OF_EDUCATION":{
+      "PLACEHOLDER": "Тип образования"
+    },
+    "DEPARTMENT":{
+      "PLACEHOLDER": "Кафедра"
+    },
+    "FACULTY":{
+      "PLACEHOLDER": "Факультет"
+    },
+    "UNIVERSITY":{
+      "PLACEHOLDER": "Университет"
+    },
+    "SPECIALIZATION":{
+      "PLACEHOLDER": "Специализация"
+    },
+    "DATE_OF_START":{
+      "PLACEHOLDER": "Дата начала обучения"
+    },
+    "DATE_OF_END":{
+      "PLACEHOLDER": "Дата окончания обучения"
+    },
+    "EDUCATION_SKILLS":{
+      "PLACEHOLDER": "Навыки полученные за время обучения"
+    },
+    "COMPANY":{
+      "NAME":{
+        "PLACEHOLDER": "Компания"
+      },
+      "POSITION":{
+        "PLACEHOLDER": "Позиция в компании"
+      },
+      "SKILLS":{
+        "PLACEHOLDER": "Навыки требуемые на данной позиции"
+      },
+      "SKILL":{
+        "PLACEHOLDER": "SKill"
+      }
+    }
+  }
+}

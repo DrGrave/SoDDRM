@@ -1,0 +1,56 @@
+server:
+  port: 3001
+
+#server.ssl.key-store: keystore.p12
+#server.ssl.key-store-password: isogj_pass
+#server.ssl.keyStoreType: PKCS12
+#server.ssl.keyAlias: tomcat
+
+com.vidnichuk.isogj.gateway:
+  ignoredPatterns: ${IGNORED_PATTERNS:/**/resume,/**/resume.json,/**/features,/**/features.json,/**/flyway,/**/flyway.json,/**/health,/**/health.json,/**/mappings,/**/mappings.json,/**/refresh,/**/refresh.json,/**/metrics,/**/metrics.json,/**/configprops,/**/configprops.json,/**/pause,/**/pause.json,/**/dump,/**/dump.json,/**/heapdump,/**/heapdump.json,/**/consul,/**/consul.json,/**/archaius,/**/archaius.json,/**/info,/**/info.json,/**/trace,/**/trace.json,/**/env,/**/env.json,/**/env/reset,/**/restart,/**/restart.json,/**/beans,/**/beans.json,/**/env,/**/env/reset/,/**/autoconfig,/**/autoconfig.json}
+
+
+zuul:
+  ignoredServices: '*'
+#  ignored-patterns: ${com.vidnichuk.isogj.gateway.ignoredPatterns}
+  host:
+    connect-timeout-millis: 20000
+    socket-timeout-millis: 20000
+    max-per-route-connections: 1000
+    max-total-connections: 5000
+
+
+  routes:
+    main-ms:
+      path: /main/**
+      service: main-ms
+      stripPrefix: true
+      sensitiveHeaders:
+    oauth-ms:
+      path: /auth/**
+      service: oauth-ms
+      stripPrefix: true
+      sensitiveHeaders:
+  prefix: /api
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    serviceUrl:
+      defaultZone: http://${REGISTRY_HOST:registry}:${REGISTRY_PORT:8761}/eureka/
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 20000
+
+
+#    notification-service:
+#        path: /notifications/**
+#        serviceId: notification-service
+#        stripPrefix: false
+#        sensitiveHeaders:

@@ -1,0 +1,181 @@
+{
+  "SIGN_UP": {
+    "COMMON": {
+      "VALIDATION": {
+        "REQUIRED": "Field is mandatory"
+      }
+    },
+    "TITLE": "Registration",
+    "USERNAME": {
+      "PLACEHOLDER": "Username",
+      "VALIDATION": {
+        "NOT_UNIQUE": "Username is already taken",
+        "PATTERN": "Username must contain only latin characters"
+      }
+    },
+    "PASSWORD": {
+      "PLACEHOLDER": "Password",
+      "VALIDATION": {
+        "PATTERN": "Password must contain at least one digit, one latin character and at least 8 characters"
+      }
+    },
+    "BIRTHDAY":{
+      "PLACEHOLDER": "Birthday",
+      "VALIDATION":{
+        "PATTERN": "Please provide your day of birth"
+      }
+    },
+    "CONFIRM_PASSWORD": {
+      "PLACEHOLDER": "Confirm password",
+      "VALIDATION": {
+        "NOT_EQUAL": "Passwords mismatch"
+      }
+    },
+    "EMAIL": {
+      "PLACEHOLDER": "Email",
+      "VALIDATION": {
+        "NOT_UNIQUE": "User with given email is already registered",
+        "EMAIL": "Invalid email. Provide correct address"
+      }
+    },
+    "FIRST_NAME": {
+      "PLACEHOLDER": "First name"
+    },
+    "MIDDLE_NAME": {
+      "PLACEHOLDER": "Middle name"
+    },
+    "LAST_NAME": {
+      "PLACEHOLDER": "Last name"
+    },
+    "SUBMIT_BUTTON": {
+      "TEXT": "Submit"
+    }
+  },
+  "HEADER":{
+    "COMMON": {
+      "VALIDATION": {
+        "REQUIRED": "Field is mandatory"
+      }
+    },
+    "SIGN_IN":{
+      "PLACEHOLDER": "Sign in"
+    },
+    "SIGN_UP":{
+      "PLACEHOLDER": "Sign up"
+    },
+    "HOME":{
+      "PLACEHOLDER": "Home"
+    },
+    "VACANCY":{
+      "PLACEHOLDER": "Vacancys"
+    },
+    "WORK":{
+      "PLACEHOLDER": "Work"
+    },
+    "LOGOUT":{
+      "PLACEHOLDER": "Logout"
+    },
+    "USER":{
+      "PLACEHOLDER": "Users"
+    }
+  },
+  "LOGIN":{
+    "BUTTON":{
+      "LOGIN":{
+        "PLACEHOLDER": "Login"
+      }
+    },
+    "LOGIN":{
+      "PLACEHOLDER": "Username"
+    },
+    "PASSWORD":{
+      "PLACEHOLDER": "Password"
+    },
+    "ENTER":{
+      "PLACEHOLDER": "Login"
+    },
+    "REQUIRED":{
+      "PASSWORD":{
+        "PLACEHOLDER": "Please inform your user name"
+      },
+      "LOGIN":{
+        "PLACEHOLDER": "Please inform your password"
+      }
+    },
+      "HEADER":{
+        "PLACEHOLDER": "Enter in system"
+      },
+    "ERROR":{
+      "INCORRECT_LOG_PASS":{
+        "PLACEHOLDER": "Incorrect login or password."
+      }
+    }
+  },
+  "USERS":{
+    "DEPARTMENT":{
+      "PLACEHOLDER": "Department:"
+    },
+    "UNIVERSITY":{
+      "PLACEHOLDER": "University:"
+    },
+    "SKILLS":{
+      "PLACEHOLDER": "Skills"
+    }
+  },
+  "VACANCYS":{
+    "COMPANY":{
+      "PLACEHOLDER": "Company:"
+    },
+    "VACANCY_TYPE":{
+      "PLACEHOLDER": "Vacancy type:"
+    }
+  },
+  "HOME":{
+    "GENDER":{
+      "PLACEHOLDER": "Gender"
+    },
+    "CITY":{
+      "PLACEHOLDER": "City"
+    },
+    "TYPE_OF_EDUCATION":{
+      "PLACEHOLDER": "Type of education"
+    },
+    "DEPARTMENT":{
+      "PLACEHOLDER": "Department"
+    },
+    "FACULTY":{
+      "PLACEHOLDER": "Faculty"
+    },
+    "UNIVERSITY":{
+      "PLACEHOLDER": "University"
+    },
+    "SPECIALIZATION":{
+      "PLACEHOLDER": "Specialization"
+    },
+    "DATE_OF_START":{
+      "PLACEHOLDER": "Date of start education"
+    },
+    "DATE_OF_END":{
+      "PLACEHOLDER": "Date of end education"
+    },
+    "EDUCATION_SKILLS":{
+      "PLACEHOLDER": "Skills witch get during education"
+    },
+    "COMPANY":{
+      "NAME":{
+        "PLACEHOLDER": "Company"
+      },
+      "POSITION":{
+        "PLACEHOLDER": "Position"
+      },
+      "SKILLS":{
+        "PLACEHOLDER": "Skills in this work"
+      },
+      "SKILL":{
+        "PLACEHOLDER": "SKill"
+      }
+    }
+
+  }
+
+}

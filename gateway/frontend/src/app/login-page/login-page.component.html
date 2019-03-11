@@ -1,0 +1,25 @@
+<div class="login-page-input-form">
+
+      <form [formGroup]="form" (ngSubmit)="authenticate($event)">
+        <p>{{ 'LOGIN.HEADER.PLACEHOLDER' | translate }}</p>
+        <mat-input-container class="full-width-input">
+          <input matInput placeholder="{{ 'LOGIN.LOGIN.PLACEHOLDER' | translate }}"
+                 formControlName="username" required>
+          <mat-error *ngIf="isFieldInvalid('username')">
+            {{ 'LOGIN.REQUIRED.LOGIN.PLACEHOLDER' | translate }}
+          </mat-error>
+        </mat-input-container>
+        <mat-input-container class="full-width-input">
+          <input matInput type="password" placeholder="{{ 'LOGIN.PASSWORD.PLACEHOLDER' | translate }}"
+                 formControlName="password" required>
+          <mat-error *ngIf="isFieldInvalid('password')">
+            {{ 'LOGIN.REQUIRED.PASSWORD.PLACEHOLDER' | translate }}
+          </mat-error>
+        </mat-input-container>
+        <div *ngIf="!isAfto" style="color: red">
+          {{'LOGIN.ERROR.INCORRECT_LOG_PASS.PLACEHOLDER' | translate}}
+        </div>
+        <button mat-raised-button color="primary" type="submit">{{'LOGIN.BUTTON.LOGIN.PLACEHOLDER'| translate}}</button>
+      </form>
+</div>
+

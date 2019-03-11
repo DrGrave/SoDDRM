@@ -1,0 +1,476 @@
+create table city
+(
+	id_city int not null auto_increment
+		primary key,
+	name_of_city varchar(255) null
+)
+;
+
+create table company
+(
+	id_company int not null auto_increment
+		primary key,
+	date_of_creation_company datetime null,
+	info_of_company varchar(255) null,
+	name_of_company varchar(255) null,
+	city_of_company int null,
+	constraint FKbk2fldd8i3j16sxhiv7u1wlum
+		foreign key (city_of_company) references city (id_city)
+)
+;
+
+create index FKbk2fldd8i3j16sxhiv7u1wlum
+	on company (city_of_company)
+;
+
+create table education
+(
+	id_of_education int not null auto_increment
+		primary key,
+	end_of_education datetime null,
+	start_of_education datetime null,
+	faculty int null,
+	school int null,
+	type_of_education int null,
+	user int null
+)
+;
+
+create index FK198l9sf1b0xanx6mp4au0cmgf
+	on education (type_of_education)
+;
+
+create index FK1q5418xk5enlxbsa622yiylwd
+	on education (faculty)
+;
+
+create index FK2mvosaxmdk20x35f654ykcplj
+	on education (user)
+;
+
+create index FKaisuay6bqm69r0pd1omskh0l8
+	on education (school)
+;
+
+create table experience
+(
+	id_experience int not null auto_increment
+		primary key,
+	date_of_end datetime null,
+	date_of_start datetime null,
+	prev_company int null,
+	user int null,
+	constraint FKc19dq0h5qymr9epwviyngjxic
+		foreign key (prev_company) references company (id_company)
+)
+;
+
+create index FKc19dq0h5qymr9epwviyngjxic
+	on experience (prev_company)
+;
+
+create index FKsal35eberq8nmfvfis0bxp5j
+	on experience (user)
+;
+
+create table faculty
+(
+	id_faculty int not null auto_increment
+		primary key,
+	name_of_faculty varchar(255) null,
+	university int null
+)
+;
+
+create index FKl1hcf6t7l10y28o108exht46d
+	on faculty (university)
+;
+
+alter table education
+	add constraint FK1q5418xk5enlxbsa622yiylwd
+		foreign key (faculty) references faculty (id_faculty)
+;
+
+create table gender
+(
+	id_gender int not null auto_increment
+		primary key,
+	name_od_gender varchar(255) not null
+)
+;
+
+create table my_user_credentials
+(
+	id_user_credential int not null auto_increment
+		primary key,
+	user_login varchar(255) null,
+	user_password varchar(255) null,
+	user int null
+)
+;
+
+create index FKsl5h9k6oaa8vevmbmi6rma6rd
+	on my_user_credentials (user)
+;
+
+create table position
+(
+	id_of_position int not null auto_increment
+		primary key,
+	name_of_position varchar(255) null
+)
+;
+
+create table school
+(
+	id_school int not null auto_increment
+		primary key,
+	name_of_school varchar(255) null,
+	city int null,
+	constraint FKfoakajih50nlit17nuymdsc4w
+		foreign key (city) references city (id_city)
+)
+;
+
+create index FKfoakajih50nlit17nuymdsc4w
+	on school (city)
+;
+
+alter table education
+	add constraint FKaisuay6bqm69r0pd1omskh0l8
+		foreign key (school) references school (id_school)
+;
+
+create table skill
+(
+	id_skill int not null auto_increment
+		primary key,
+	name_of_skill varchar(255) not null,
+	type_of_skill int not null
+)
+;
+
+create index FK2pq7nkn4vi1tw0f3sh9te20ak
+	on skill (type_of_skill)
+;
+
+create table summary
+(
+	id_of_summary int not null auto_increment
+		primary key,
+	text_of_summary varchar(255) null,
+	user int null
+)
+;
+
+create index FKsr71us8i74ib72m71y2jy21tc
+	on summary (user)
+;
+
+create table task
+(
+	id_of_task int not null auto_increment
+		primary key,
+	info_of_task varchar(255) null,
+	name_of_task varchar(255) null,
+	type_of_task int null
+)
+;
+
+create index FKhnxotnqsbea4shipxmjxk4a1v
+	on task (type_of_task)
+;
+
+create table type_of_accepted
+(
+	id_type_of_accepted int not null auto_increment
+		primary key,
+	name_of_accepted varchar(255) null
+)
+;
+
+create table type_of_education
+(
+	id_type_of_education int not null auto_increment
+		primary key,
+	name_type_of_education varchar(255) null
+)
+;
+
+alter table education
+	add constraint FK198l9sf1b0xanx6mp4au0cmgf
+		foreign key (type_of_education) references type_of_education (id_type_of_education)
+;
+
+create table type_of_skill
+(
+	id_type_of_skill int not null auto_increment
+		primary key,
+	name_of_type_skill varchar(255) null
+)
+;
+
+alter table skill
+	add constraint FK2pq7nkn4vi1tw0f3sh9te20ak
+		foreign key (type_of_skill) references type_of_skill (id_type_of_skill)
+;
+
+create table type_of_task
+(
+	id_type_of_task int not null auto_increment
+		primary key,
+	name_type_of_task varchar(255) null
+)
+;
+
+alter table task
+	add constraint FKhnxotnqsbea4shipxmjxk4a1v
+		foreign key (type_of_task) references type_of_task (id_type_of_task)
+;
+
+create table type_of_user
+(
+	id_type_of_user int not null auto_increment
+		primary key,
+	name_of_type_user varchar(255) null
+)
+;
+
+create table type_of_vacancy
+(
+	id_type_of_vacancy int not null auto_increment
+		primary key,
+	name_type_of_vacancy varchar(255) null
+)
+;
+
+create table university
+(
+	id_university int not null auto_increment
+		primary key,
+	name_of_university varchar(255) null,
+	city int null,
+	constraint FKgpb65dw0enw32ntji9bjuhr0l
+		foreign key (city) references city (id_city)
+)
+;
+
+create index FKgpb65dw0enw32ntji9bjuhr0l
+	on university (city)
+;
+
+alter table faculty
+	add constraint FKl1hcf6t7l10y28o108exht46d
+		foreign key (university) references university (id_university)
+;
+
+create table user
+(
+	user_id int not null auto_increment
+		primary key,
+	active int null,
+	email varchar(255) not null,
+	user_name varchar(255) not null,
+	user_patronymic varchar(255) not null,
+	user_surname varchar(255) not null,
+	city_of_living int null,
+	gender int null,
+	type_of_user int null,
+	constraint FKkrcm363wm8xl5ydosqnynmhym
+		foreign key (city_of_living) references city (id_city),
+	constraint FK1isrcw5olh4k3cddck2x7um5p
+		foreign key (gender) references gender (id_gender),
+	constraint FKgcjmd56vdfe8y4uxwq5jb852d
+		foreign key (type_of_user) references type_of_user (id_type_of_user)
+)
+;
+
+create index FK1isrcw5olh4k3cddck2x7um5p
+	on user (gender)
+;
+
+create index FKgcjmd56vdfe8y4uxwq5jb852d
+	on user (type_of_user)
+;
+
+create index FKkrcm363wm8xl5ydosqnynmhym
+	on user (city_of_living)
+;
+
+alter table education
+	add constraint FK2mvosaxmdk20x35f654ykcplj
+		foreign key (user) references user (user_id)
+;
+
+alter table experience
+	add constraint FKsal35eberq8nmfvfis0bxp5j
+		foreign key (user) references user (user_id)
+;
+
+alter table my_user_credentials
+	add constraint FKsl5h9k6oaa8vevmbmi6rma6rd
+		foreign key (user) references user (user_id)
+;
+
+alter table summary
+	add constraint FKsr71us8i74ib72m71y2jy21tc
+		foreign key (user) references user (user_id)
+;
+
+create table user_city_to_work
+(
+	id_user_city_to_work int not null auto_increment
+		primary key,
+	city int null,
+	user int null,
+	constraint FKigrnt8s3c2t56sv3jik9sc1xo
+		foreign key (city) references city (id_city),
+	constraint FK2aprpn82k8ximfho568jkbo9o
+		foreign key (user) references user (user_id)
+)
+;
+
+create index FK2aprpn82k8ximfho568jkbo9o
+	on user_city_to_work (user)
+;
+
+create index FKigrnt8s3c2t56sv3jik9sc1xo
+	on user_city_to_work (city)
+;
+
+create table user_company
+(
+	id_user_company int not null auto_increment
+		primary key,
+	company int null,
+	position int null,
+	user int null,
+	constraint FKi6q4u3i9d85h47qjn7w7p9687
+		foreign key (company) references company (id_company),
+	constraint FKc1goa9mr96odm0l38subly2jf
+		foreign key (position) references position (id_of_position),
+	constraint FKopbeqqs42qr4nhq4ew10dt069
+		foreign key (user) references user (user_id)
+)
+;
+
+create index FKc1goa9mr96odm0l38subly2jf
+	on user_company (position)
+;
+
+create index FKi6q4u3i9d85h47qjn7w7p9687
+	on user_company (company)
+;
+
+create index FKopbeqqs42qr4nhq4ew10dt069
+	on user_company (user)
+;
+
+create table user_skill
+(
+	id_user_skill int not null auto_increment
+		primary key,
+	skill_mark varchar(255) null,
+	skill_practical_mark varchar(255) null,
+	id_marker int null,
+	id_skill int null,
+	id_user int null,
+	constraint FK6pru830ugj5nuapp3nhdl2p9p
+		foreign key (id_marker) references user (user_id),
+	constraint FKrsvxrshr30q4756yoxncoaeyl
+		foreign key (id_skill) references skill (id_skill),
+	constraint FKkwwol8ie05lcjsko1qewnm6r7
+		foreign key (id_user) references user (user_id)
+)
+;
+
+create index FK6pru830ugj5nuapp3nhdl2p9p
+	on user_skill (id_marker)
+;
+
+create index FKkwwol8ie05lcjsko1qewnm6r7
+	on user_skill (id_user)
+;
+
+create index FKrsvxrshr30q4756yoxncoaeyl
+	on user_skill (id_skill)
+;
+
+create table vacancy
+(
+	id_vacancy int not null auto_increment
+		primary key,
+	info_of_vacancy varchar(255) null,
+	task int null,
+	type_of_vacancy int null,
+	constraint FK88okuegm0qxj10q8nrp4odo97
+		foreign key (task) references task (id_of_task),
+	constraint FKg1qrdnkrpjlkt2fr9twump8pt
+		foreign key (type_of_vacancy) references type_of_vacancy (id_type_of_vacancy)
+)
+;
+
+create index FK88okuegm0qxj10q8nrp4odo97
+	on vacancy (task)
+;
+
+create index FKg1qrdnkrpjlkt2fr9twump8pt
+	on vacancy (type_of_vacancy)
+;
+
+create table vacancy_skill
+(
+	id_vacancy_skill int not null auto_increment
+		primary key,
+	skill int null,
+	vacancy int null,
+	constraint FKk10dm3uxe9tlepfwottw6q072
+		foreign key (skill) references skill (id_skill),
+	constraint FKogk31vh34wanbyjgvq8yer6hi
+		foreign key (vacancy) references vacancy (id_vacancy)
+)
+;
+
+create index FKk10dm3uxe9tlepfwottw6q072
+	on vacancy_skill (skill)
+;
+
+create index FKogk31vh34wanbyjgvq8yer6hi
+	on vacancy_skill (vacancy)
+;
+
+create table vacancy_user
+(
+	id_vacancy_user int not null auto_increment
+		primary key,
+	if_user_accepted int null,
+	if_company_accepted int null,
+	user int null,
+	vacancy int null,
+	constraint FKng2im8qoux4iu0sptjpjxjgqy
+		foreign key (if_user_accepted) references type_of_accepted (id_type_of_accepted),
+	constraint FK5cwwyx2r06bct7owdhq18e3ah
+		foreign key (if_company_accepted) references type_of_accepted (id_type_of_accepted),
+	constraint FKgqk92dw8f09b5kttg02uff0rm
+		foreign key (user) references user (user_id),
+	constraint FKpe3ak6fx2jbgormipmkxy9rff
+		foreign key (vacancy) references vacancy (id_vacancy)
+)
+;
+
+create index FK5cwwyx2r06bct7owdhq18e3ah
+	on vacancy_user (if_company_accepted)
+;
+
+create index FKgqk92dw8f09b5kttg02uff0rm
+	on vacancy_user (user)
+;
+
+create index FKng2im8qoux4iu0sptjpjxjgqy
+	on vacancy_user (if_user_accepted)
+;
+
+create index FKpe3ak6fx2jbgormipmkxy9rff
+	on vacancy_user (vacancy)
+;
+

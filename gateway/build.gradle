@@ -1,0 +1,77 @@
+buildscript {
+    ext {
+        springBootVersion = '1.5.8.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+plugins {
+    id "com.moowork.node" version "1.1.1"
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+jar {
+    baseName = 'gateway-ms'
+    version = '0.0.1-SNAPSHOT'
+    from('frontend/dist') {
+        into 'static'
+    }
+}
+
+task copyCert(type: Copy) {
+    from '../keystore.p12'
+    into 'build/'
+}
+
+build.dependsOn.add(copyCert)
+
+jar.dependsOn('buildFrontend')
+
+task installNpm (type: NpmTask) {
+    execOverrides {
+        it.workingDir = 'frontend'
+    }
+    args = ['install']
+}
+
+task buildFrontend(type: NpmTask, dependsOn: 'installNpm') {
+    execOverrides {
+        it.workingDir = 'frontend'
+    }
+    args = ['run', 'build']
+}
+
+
+repositories {
+    mavenCentral()
+}
+
+
+ext {
+    springCloudVersion = 'Dalston.SR4'
+}
+
+dependencies {
+    compile('org.springframework.cloud:spring-cloud-starter-zuul')
+    compile('org.springframework.cloud:spring-cloud-starter')
+    compile('org.springframework.cloud:spring-cloud-starter-eureka')
+
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+    }
+}

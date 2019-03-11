@@ -1,0 +1,84 @@
+version: '3.1'
+
+networks:
+  isogj_subnet:
+    external:
+      name: isogj_subnet
+
+services:
+  main-ms:
+    build: main-ms
+    image: isogj/main-ms
+    restart: always
+    networks:
+      - isogj_subnet
+    depends_on:
+      - isogj-mysql
+    logging:
+          options:
+            max-size: "10m"
+            max-file: "10"
+    ports:
+      - 8080:8080
+
+  oauth-ms:
+    build: oauth-ms
+    image: isogj/oauth-ms
+    restart: always
+    networks:
+      - isogj_subnet
+    depends_on:
+      - isogj-mysql
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "10"
+    ports:
+      - 9999:9999
+
+  gateway:
+      build: gateway
+      image: isogj/gateway
+      restart: always
+      networks:
+        - isogj_subnet
+      logging:
+            options:
+              max-size: "10m"
+              max-file: "10"
+      ports:
+        - 3001:3001
+
+  registry:
+    build: registry
+    image: isogj/registry
+    restart: always
+    networks:
+      isogj_subnet:
+        ipv4_address: 172.2.2.2
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "10"
+    ports:
+      - 8761:8761
+
+  isogj-mysql:
+    image: mysql:5.7
+    restart: always
+    environment:
+     - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+    ports:
+      - 3306:3306
+    networks:
+      isogj_subnet:
+        ipv4_address: 172.2.2.1
+  rabbit:
+    image: rabbitmq:3-management
+    environment:
+      - RABBITMQ_DEFAULT_USER=user
+      - RABBITMQ_DEFAULT_PASS=password
+    ports:
+      - 5672:5672
+      - 15672:15672
+    restart: always

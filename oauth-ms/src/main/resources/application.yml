@@ -1,0 +1,61 @@
+server:
+  port: 9999
+
+#server.ssl.key-store: keystore.p12
+#server.ssl.key-store-password: isogj_pass
+#server.ssl.keyStoreType: PKCS12
+#server.ssl.keyAlias: tomcat
+
+
+spring:
+  jpa.hibernate.ddl-auto: validate
+  datasource:
+    isogj:
+      host: ${MYSQL_HOST:isogj-mysql}
+      port: ${MYSQL_PORT:3306}
+      current_schema: isogj_oauth
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://${spring.datasource.isogj.host}:${spring.datasource.isogj.port}/${spring.datasource.isogj.current_schema}?autoReconnect=true&useSSL=false&useUnicode=yes&characterEncoding=UTF-8
+    username: root
+    password:
+    tomcat:
+      max-wait: 20000
+      max-active: 50
+      max-idle: 20
+      min-idle: 15
+    platform: mysql
+  http.multipart:
+    enabled: true
+    max-file-size: 100mb
+    max-request-size: 100mb
+
+
+
+logging.level:
+  org.springframework.security: DEBUG
+  org.hibernate.SQL: DEBUG
+  org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+
+flyway:
+  schemas: ${spring.datasource.isogj.current_schema}
+  url: jdbc:mysql://${spring.datasource.isogj.host}:${spring.datasource.isogj.port}/?autoReconnect=true&useSSL=false
+  user: ${spring.datasource.username}
+  password: ${spring.datasource.password}
+  enabled: true
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    serviceUrl:
+      defaultZone: http://${REGISTRY_HOST:registry}:${REGISTRY_PORT:8761}/eureka/
+
+
+
+com.vidnichuk.isogj.auth:
+  passwords:
+    gateWayMs: ${GATEWAY_SERVICE_PASSWORD:123}
+    mainMs: ${MAIN_SERVICE_PASSWORD:123}
+    oauthMs: ${OAUTH_SERVICE_PASSWORD:123}
+
+

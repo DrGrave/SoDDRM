@@ -1,0 +1,23 @@
+.lang-select {
+  width: 80px;
+  font-size: 14px;
+  vertical-align: middle;
+}
+
+.lang-select .mat-select-trigger {
+  min-width: 80px;
+}
+
+.lang-select .mat-select-value,
+.lang-select .mat-select-arrow,
+.lang-select .mat-select-underline {
+  color: white;
+
+}
+
+.lang-select:focus  .mat-select-arrow {
+  color: white !important;
+}
+.lang-select:focus  .mat-select-underline {
+  background-color: white !important;
+}
